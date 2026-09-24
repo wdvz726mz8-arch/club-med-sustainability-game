@@ -1,0 +1,1148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b3b48" />
+  <title>Club Med Sustainability Mission</title>
+
+  <!-- Friendly, rounded fonts. If Google Fonts is blocked, the fallbacks still work. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --ink:#102a2f;
+      --muted:#60767a;
+      --paper:#f8f7f2;
+      --card:#ffffff;
+      --line:#dce7e6;
+      --nature:#0e7a66;
+      --nature2:#b9e2d5;
+      --community:#b76b2b;
+      --community2:#f3d9bd;
+      --accent:#0b5967;
+      --gold:#d49a3a;
+      --danger:#b54d4d;
+      --shadow:0 14px 38px rgba(21,53,58,.10);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at top left, rgba(14,122,102,.08), transparent 36%),
+        radial-gradient(circle at bottom right, rgba(183,107,43,.08), transparent 34%),
+        var(--paper);
+      color:var(--ink);
+      font-family:"Nunito","Avenir Next",system-ui,sans-serif;
+      min-height:100vh;
+    }
+    button,input{font:inherit}
+    button{cursor:pointer}
+    .app{max-width:760px;margin:0 auto;padding:18px 16px 46px}
+    .topbar{
+      display:flex;justify-content:space-between;align-items:center;gap:12px;
+      margin-bottom:14px;
+    }
+    .brand{font-weight:900;letter-spacing:.01em;font-size:.95rem}
+    .mini-btn{
+      border:1px solid var(--line);background:#fff;color:var(--muted);
+      padding:8px 12px;border-radius:999px;font-size:.82rem;font-weight:800;
+    }
+    .hero,.card{
+      background:rgba(255,255,255,.96);
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      border-radius:24px;
+    }
+    .hero{padding:30px 24px}
+    .card{padding:22px}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:7px;
+      text-transform:uppercase;letter-spacing:.13em;font-size:.72rem;font-weight:900;
+      color:var(--accent);margin-bottom:10px;
+    }
+    h1,h2,h3,p{margin-top:0}
+    h1,h2,h3,.story-copy,.quote{
+      font-family:"Fredoka","Arial Rounded MT Bold","Trebuchet MS",sans-serif;
+    }
+    h1{font-size:clamp(2rem,6vw,3.2rem);line-height:1.03;margin-bottom:14px;font-weight:700}
+    h2{font-size:clamp(1.55rem,5vw,2.25rem);line-height:1.12;margin-bottom:12px;font-weight:700}
+    h3{font-size:1.08rem;margin-bottom:8px;font-weight:700}
+    p{line-height:1.65}
+    .lead{font-size:1.05rem;color:#35545a}
+    .quote{
+      border-left:4px solid var(--accent);padding:12px 0 12px 16px;
+      margin:18px 0;color:#26464c;font-weight:600;font-size:1.08rem;
+    }
+    .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+    .btn{
+      border:none;border-radius:14px;padding:13px 17px;font-weight:900;
+      min-height:48px;transition:.16s ease;display:inline-flex;justify-content:center;align-items:center;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{background:var(--accent);color:white}
+    .btn-secondary{background:#edf5f5;color:var(--accent)}
+    .btn-outline{background:white;border:1px solid var(--line);color:var(--ink)}
+    .btn-danger{background:#fff2f2;color:#9d3f3f;border:1px solid #efd2d2}
+    .btn-full{width:100%}
+    .route-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+    .route{
+      border:none;text-align:left;border-radius:20px;padding:20px;min-height:184px;
+      color:var(--ink);position:relative;overflow:hidden;
+    }
+    .route strong{display:block;font-size:1.2rem;margin:8px 0 7px}
+    .route span{display:block;color:#3f595d;line-height:1.5}
+    .route-nature{background:linear-gradient(145deg,#e5f4ee,#c9e9df)}
+    .route-community{background:linear-gradient(145deg,#fbecdc,#f1d5b8)}
+    .route-icon{font-size:2rem}
+    .route:after{
+      content:"→";position:absolute;right:16px;bottom:12px;font-size:1.5rem;font-weight:900;opacity:.55
+    }
+    .status{
+      display:grid;grid-template-columns:1fr auto;gap:12px;align-items:end;margin:6px 0 14px
+    }
+    .status-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.11em;color:var(--muted);font-weight:900}
+    .score{font-size:1.28rem;font-weight:950}
+    .progress{
+      height:9px;background:#e7eeee;border-radius:99px;overflow:hidden;margin-top:7px
+    }
+    .progress > div{
+      height:100%;width:0;background:var(--accent);border-radius:99px;transition:width .35s ease
+    }
+    .space-type{
+      display:inline-flex;padding:7px 10px;border-radius:999px;background:#edf4f3;
+      text-transform:uppercase;letter-spacing:.08em;font-size:.7rem;font-weight:950;color:#47666b;
+      margin-bottom:12px
+    }
+    .checkpoint{background:#fff7e7;color:#8a611e;border:1px solid #f0d69c}
+    .story-copy{
+      white-space:pre-line;font-size:1.12rem;line-height:1.72;color:#26434a;
+      font-weight:500;letter-spacing:.005em;
+    }
+    .choice-list{display:grid;gap:10px;margin-top:16px}
+    .choice{
+      width:100%;text-align:left;border:1px solid var(--line);background:#fff;
+      padding:13px 14px;border-radius:14px;color:var(--ink);font-weight:800;
+    }
+    .choice:hover{border-color:#9ebbbb;background:#f8fbfb}
+    .choice[disabled]{cursor:default;opacity:.9}
+    .choice.correct{border-color:#78bca8;background:#eaf7f2}
+    .choice.wrong{border-color:#d8a0a0;background:#fff0f0}
+    .feedback{
+      margin-top:14px;padding:14px;border-radius:14px;background:#f7f4ea;line-height:1.55
+    }
+    .impact-note{
+      margin-top:16px;padding:13px 14px;border-radius:14px;
+      background:#eef7f4;border:1px solid #d4e8e2;color:#365d58;font-weight:800;
+    }
+    .dice-panel{text-align:center;padding:26px 18px}
+    .dice-mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+    .mode-card{
+      border:1px solid var(--line);background:#fff;border-radius:18px;padding:18px;text-align:left
+    }
+    .mode-card strong{display:block;margin-bottom:6px}
+    .d4-wrap{display:grid;place-items:center;margin:24px auto 8px}
+    .d4{
+      width:128px;height:112px;display:grid;place-items:center;color:#fff;font-weight:950;font-size:2.4rem;
+      background:linear-gradient(160deg,#0f7180,#0a4a55);
+      clip-path:polygon(50% 0%, 100% 100%, 0 100%);
+      filter:drop-shadow(0 13px 13px rgba(10,50,56,.2));
+      user-select:none;
+    }
+    .d4 span{transform:translateY(18px)}
+    .d4.clickable{cursor:pointer}
+    .rolling{animation:rollD4 .13s linear infinite}
+    @keyframes rollD4{
+      0%{transform:rotate(-7deg) scale(.98)}
+      50%{transform:rotate(7deg) scale(1.05)}
+      100%{transform:rotate(-7deg) scale(.98)}
+    }
+    .roll-buttons{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+    .roll-number{
+      min-height:58px;border-radius:16px;border:1px solid var(--line);background:#fff;
+      font-size:1.35rem;font-weight:950;color:var(--accent)
+    }
+    .checkpoint-alert{
+      background:#fff5dc;border:1px solid #f0d192;color:#79551b;
+      border-radius:14px;padding:12px 14px;margin-bottom:14px;font-weight:850
+    }
+    .footer-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .link-btn{border:none;background:none;color:var(--muted);text-decoration:underline;font-size:.86rem;padding:7px;font-weight:800}
+    .final-badge{
+      display:inline-flex;align-items:center;gap:8px;background:#eef5f3;border:1px solid var(--line);
+      border-radius:999px;padding:10px 14px;font-weight:950;margin:10px 0 18px
+    }
+    .final-score{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
+    .metric{background:#f4f7f6;border-radius:18px;padding:16px}
+    .metric b{display:block;font-size:1.6rem;margin-top:4px}
+
+    /* Big point celebration */
+    .point-pop{
+      text-align:center;padding:34px 18px;position:relative;overflow:hidden;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(212,154,58,.13), transparent 28%),
+        radial-gradient(circle at 80% 20%, rgba(14,122,102,.10), transparent 28%),
+        #fff;
+    }
+    .point-icon{font-size:3rem;animation:pointBounce .6s ease}
+    .point-big{
+      font-family:"Fredoka","Arial Rounded MT Bold",sans-serif;
+      font-size:clamp(2.8rem,12vw,5.2rem);line-height:1;font-weight:700;
+      color:var(--nature);margin:8px 0 4px;
+      animation:pointBounce .6s ease;
+    }
+    .point-get{
+      font-family:"Fredoka","Arial Rounded MT Bold",sans-serif;
+      font-size:clamp(1.5rem,6vw,2.35rem);font-weight:700;letter-spacing:.02em;
+      color:var(--accent);margin-bottom:10px;
+    }
+    .point-sub{color:var(--muted);font-weight:800}
+    .spark{
+      position:absolute;width:10px;height:10px;border-radius:50%;opacity:.7;
+      animation:spark 1s ease-out forwards;
+    }
+    .s1{left:13%;top:25%;background:#d49a3a}
+    .s2{left:24%;top:12%;background:#0e7a66}
+    .s3{right:18%;top:18%;background:#b76b2b}
+    .s4{right:29%;top:32%;background:#86b9aa}
+    .s5{left:42%;top:7%;background:#d8bd72}
+    @keyframes pointBounce{
+      0%{transform:scale(.55);opacity:0}
+      65%{transform:scale(1.12);opacity:1}
+      100%{transform:scale(1)}
+    }
+    @keyframes spark{
+      0%{transform:translateY(8px) scale(.2);opacity:0}
+      30%{opacity:.85}
+      100%{transform:translateY(-36px) scale(1);opacity:0}
+    }
+
+    .hidden{display:none!important}
+    .fade{animation:fade .28s ease}
+    @keyframes fade{from{opacity:.2;transform:translateY(5px)}to{opacity:1;transform:none}}
+    @media (max-width:590px){
+      .route-grid,.dice-mode-grid{grid-template-columns:1fr}
+      .hero{padding:24px 18px}
+      .card{padding:18px}
+      .final-score{grid-template-columns:1fr}
+    }
+    @media (prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}
+    }
+  </style>
+</head>
+<body>
+<div class="app" id="app">
+  <div class="topbar">
+    <div class="brand">Club Med Sustainability Mission</div>
+    <button class="mini-btn hidden" id="restartBtn" type="button">Restart Game</button>
+  </div>
+  <main id="screen" aria-live="polite"></main>
+</div>
+
+<script>
+(() => {
+  const STORAGE_KEY = "clubMedSustainabilityMissionV7";
+  const BEST_SCORE_KEY = "clubMedSustainabilityMissionBestScoresV1";
+  const MAX_SCORE = 1500;
+  const REWARD_SCORE = 1000;
+
+  const ROUTES = {
+    nature: {
+      name: "Nature Mission",
+      icon: "🌊",
+      badge: "Nature Guardian",
+      introTitle: "Save the Island Before Hatching Night",
+      intro: `Sea turtle eggs may hatch soon.
+
+Your family has one mission: help the beach stay safe for wildlife while guests still enjoy their holiday.
+
+Roll the dice, explore the resort, and work together. Only the three Checkpoints give points — so every family gets the same chance to score.`,
+      spaces: [
+        {type:"Story", title:"Beach Detective", points:0, body:`The beach looks perfect… until you spot a piece of plastic near the sand.
+
+Look around. What is one thing here that nature needs to stay healthy?`},
+        {type:"Real-world Mission", title:"Ask the Club Med Team!", points:0, body:`Find a Club Med staff member and ask:
+
+“What is one thing Club Med does here to protect nature or reduce plastic?”
+
+Come back with one answer.`},
+        {type:"Family Challenge", title:"One Beach, Two Jobs", points:0, body:`A beach is for holidays — but it is also a home for wildlife.
+
+Name one thing guests need and one thing animals need.`},
+        {type:"Club Med Initiative", title:"Bye-Bye Plastics", points:0, body:`Small plastic items can add up fast.
+
+Club Med's Bye-Bye Plastics approach helps reduce unnecessary single-use plastic.
+
+Can your family name one reusable alternative?`},
+        {type:"Checkpoint", title:"Checkpoint 1 · Protect the Turtle", body:`A young turtle has been found near the beach.
+
+Time for your first 500-point challenge!`, quiz:[
+          {question:"What is the best way to reduce plastic waste?", points:100, choices:[
+            {text:"Use reusable or refillable items when possible.", correct:true},
+            {text:"Use more single-use items because they are convenient.", correct:false},
+            {text:"Leave plastic where it is if the beach still looks clean.", correct:false}
+          ], feedback:"Reusable and refillable choices can reduce waste before it is created."},
+          {question:"At night, what can help turtle hatchlings?", points:150, choices:[
+            {text:"More bright lights near the nest.", correct:false},
+            {text:"Less unnecessary light near the nesting area.", correct:true},
+            {text:"A crowd standing close to watch.", correct:false}
+          ], feedback:"Less unnecessary light can make the nesting area less disturbing."},
+          {question:"Why should guests keep some distance from a nesting area?", points:250, choices:[
+            {text:"To reduce disturbance and keep a clear path to the sea.", correct:true},
+            {text:"So the beach looks empty in photos.", correct:false},
+            {text:"Because turtles only move when no humans are on the island.", correct:false}
+          ], feedback:"Space helps protect wildlife while guests can still enjoy the beach responsibly."}
+        ]},
+        {type:"Family Discussion", title:"Turtle Team", points:0, body:`30-second challenge!
+
+Each person says one thing a turtle needs: darkness, quiet, clean water, safe sand…`},
+        {type:"Look Around", title:"Light Check", points:0, body:`Find one bright place and one darker place.
+
+Which would feel safer for wildlife at night?`},
+        {type:"Discovery", title:"Biodiversity", points:0, body:`A resort shares its home with plants and animals too.
+
+Biodiversity means protecting many different living things.`},
+        {type:"Mini Mission", title:"Beach Risk Hunt", points:0, body:`Find or imagine one thing that could disturb wildlife.
+
+Plastic? Bright light? Noise? Crowding?
+
+How would you improve it?`},
+        {type:"Checkpoint", title:"Checkpoint 2 · The Storm", body:`A storm changes the beach overnight.
+
+Now you must protect wildlife and still think about the guest experience.`, quiz:[
+          {question:"A family event is planned beside the protected area. What is the best choice?", points:100, choices:[
+            {text:"Move the event to another area.", correct:true},
+            {text:"Keep it beside the nest because guests planned for it.", correct:false},
+            {text:"Move the nest so the event can stay.", correct:false}
+          ], feedback:"Moving the event protects the sensitive area while keeping the activity possible."},
+          {question:"After the storm, what should the team do first?", points:150, choices:[
+            {text:"Check the beach and protected area before making a new plan.", correct:true},
+            {text:"Assume nothing changed.", correct:false},
+            {text:"Invite more guests into the area to inspect it.", correct:false}
+          ], feedback:"Checking the new conditions first helps the team make a safer decision."},
+          {question:"Which option best balances guests and wildlife?", points:250, choices:[
+            {text:"Protect the habitat and explain any changes to guests.", correct:true},
+            {text:"Always choose guest convenience, even if wildlife is disturbed.", correct:false},
+            {text:"Close every beach activity even when it is far from the habitat.", correct:false}
+          ], feedback:"Good sustainability can protect nature while keeping the guest experience meaningful."}
+        ]},
+        {type:"Creative Challenge", title:"Make a Beach Rule", points:0, body:`Create a rule with five words or fewer.
+
+Example: “Give turtles space at night.”
+
+Make your own!`},
+        {type:"Story", title:"Everything Is Connected", points:0, body:`The turtle is not alone.
+
+Fish, coral, sand, water and people all affect each other.
+
+Nature works like a team.`},
+        {type:"Family Challenge", title:"Make a Nature Chain", points:0, body:`Create one simple chain.
+
+Example:
+plastic → ocean → animal
+
+Can you make another one?`},
+        {type:"Real-world Mission", title:"Find Sustainability in Action", points:0, body:`Explore the resort.
+
+Find one real thing that helps nature — a refill station, waste system, protected area, sign, or something else.`},
+        {type:"Checkpoint", title:"Checkpoint 3 · Hatching Night", body:`Tonight may be hatching night.
+
+This is your final 500-point challenge!`, quiz:[
+          {question:"Guests want a close view. What should the team do?", points:100, choices:[
+            {text:"Create a viewing boundary and keep the path clear.", correct:true},
+            {text:"Let everyone stand around the nest.", correct:false},
+            {text:"Move the hatchlings closer to the guests.", correct:false}
+          ], feedback:"A viewing boundary protects the animals while guests can still watch."},
+          {question:"What should be removed from the turtles' path?", points:150, choices:[
+            {text:"Litter and obstacles.", correct:true},
+            {text:"Sand.", correct:false},
+            {text:"The sea.", correct:false}
+          ], feedback:"A clear route removes avoidable obstacles between the hatchlings and the sea."},
+          {question:"Why is it useful to explain the rules to guests?", points:250, choices:[
+            {text:"People are more likely to cooperate when they understand why it matters.", correct:true},
+            {text:"It makes the rules longer.", correct:false},
+            {text:"It guarantees every turtle will survive.", correct:false}
+          ], feedback:"Understanding the reason can turn a rule into a shared mission."}
+        ]},
+        {type:"Family Action", title:"Choose One Action", points:0, body:`Pick one action:
+
+dim lights, keep distance, or clear litter.
+
+Why did your family choose it?`},
+        {type:"Quiet Challenge", title:"20 Seconds of Nature", points:0, body:`Stay quiet for 20 seconds.
+
+What can you hear?
+
+Waves? Wind? Birds? People?`},
+        {type:"Look Around", title:"Worth Protecting", points:0, body:`Point to one thing around you that is worth protecting.
+
+Tell your family why.`},
+        {type:"Story", title:"The Sand Moves", points:0, body:`The beach is quiet.
+
+Then the sand begins to move.
+
+Tiny hatchlings appear and head toward the sea.`},
+        {type:"Achievement", title:"Nature Mission Complete", points:0, body:`You helped make space for nature.
+
+The beach is not only a place to visit. It is also a home.
+
+MISSION COMPLETE!`}
+      ]
+    },
+
+    community: {
+      name: "Community Mission",
+      icon: "🤝",
+      badge: "Community Guardian",
+      introTitle: "Can a Resort Grow With Its Community?",
+      intro: `Every meal, room and activity depends on people.
+
+Your family has one mission: discover who helps make the holiday possible and how a resort can support the community around it.
+
+Only the three Checkpoints give points — so every family gets the same chance to score.`,
+      spaces: [
+        {type:"Story", title:"Breakfast Has a Story", points:0, body:`Look at one food on your plate.
+
+Someone had to grow it, move it and prepare it.
+
+Who might be part of its journey?`},
+        {type:"Family Challenge", title:"Food Detective", points:0, body:`Choose one food.
+
+Guess where it came from and how many people helped it reach your table.`},
+        {type:"Real-world Mission", title:"Notice the Team", points:0, body:`Look around the resort.
+
+Name three different jobs that help make your holiday possible.`},
+        {type:"Club Med Initiative", title:"Green Farmers", points:0, body:`Club Med's Green Farmers initiative connects tourism with local farming.
+
+A meal can support guests and the people who produce the food.`},
+        {type:"Checkpoint", title:"Checkpoint 1 · Meet the Farmer", body:`A local farmer wants a reliable buyer.
+
+Can your family build a fair partnership?`, quiz:[
+          {question:"When choosing a supplier, what should a resort consider?", points:100, choices:[
+            {text:"Price, quality, reliability and wider impact.", correct:true},
+            {text:"Only the cheapest price.", correct:false},
+            {text:"Only how close the farm is.", correct:false}
+          ], feedback:"A strong supplier decision looks at several kinds of value, not price alone."},
+          {question:"The local farm cannot supply everything this week. What is the best response?", points:150, choices:[
+            {text:"Use extra supply if needed while keeping the local partnership.", correct:true},
+            {text:"End the local partnership immediately.", correct:false},
+            {text:"Let the restaurant run out of food.", correct:false}
+          ], feedback:"A balanced plan can keep guests supplied without treating the partnership as disposable."},
+          {question:"Why can a long-term buyer be valuable to a farmer?", points:250, choices:[
+            {text:"It can give more stability for planning and investment.", correct:true},
+            {text:"It means weather can never damage crops.", correct:false},
+            {text:"It guarantees every crop will be sold at any price.", correct:false}
+          ], feedback:"More reliable demand can make it easier to plan and invest for the future."}
+        ]},
+        {type:"Family Discussion", title:"What Is Fair?", points:0, body:`Talk for 30 seconds.
+
+What makes a partnership fair?
+
+Pick your top two: price, quality, reliability, trust.`},
+        {type:"Mini Mission", title:"Who Made This Meal?", points:0, body:`Name three people who may be behind one meal.
+
+Farmer? Driver? Cook? Server?`},
+        {type:"Discovery", title:"People Behind the Resort", points:0, body:`A resort is more than buildings.
+
+Many different people work together to create the guest experience.`},
+        {type:"Real-world Mission", title:"Say Thank You", points:0, body:`Think of one person who helped your stay today.
+
+If it feels appropriate, say thank you.`},
+        {type:"Checkpoint", title:"Checkpoint 2 · Food in the Bin", body:`After dinner, you notice food being wasted.
+
+Can you reduce waste without reducing the holiday experience?`, quiz:[
+          {question:"What should the kitchen do first if it wants to reduce food waste?", points:100, choices:[
+            {text:"Measure what is being wasted and where.", correct:true},
+            {text:"Guess the biggest problem.", correct:false},
+            {text:"Ignore it because buffets always create waste.", correct:false}
+          ], feedback:"Measuring the problem helps the team act on evidence instead of guessing."},
+          {question:"What can guests do at a buffet?", points:150, choices:[
+            {text:"Take a smaller amount first and go back if still hungry.", correct:true},
+            {text:"Take extra food just in case.", correct:false},
+            {text:"Avoid eating anything at all.", correct:false}
+          ], feedback:"Taking what you can finish can reduce waste while keeping the buffet experience."},
+          {question:"Why does food waste matter?", points:250, choices:[
+            {text:"It can waste food, water, land, transport and people's work.", correct:true},
+            {text:"It only matters because bins become full.", correct:false},
+            {text:"It has no link to the people who produced the food.", correct:false}
+          ], feedback:"Food carries resources and human effort before it reaches the plate."}
+        ]},
+        {type:"Real-world Action", title:"Finish-What-You-Take Challenge", points:0, body:`At your next meal, take only what you think you can finish.
+
+Still hungry? Go back for more.`},
+        {type:"Family Challenge", title:"Where Can Waste Happen?", points:0, body:`Think about the journey:
+
+farm → transport → kitchen → buffet → plate
+
+Where could food be wasted?`},
+        {type:"Discovery", title:"Responsible Purchasing", points:0, body:`The cheapest choice is not always the best choice.
+
+Businesses can also think about quality, reliability, nature and people.`},
+        {type:"Family Challenge", title:"Bad Harvest!", points:0, body:`Heavy rain damages a farm's harvest.
+
+Your family has 20 seconds to invent a backup plan that still supports the farmer.`},
+        {type:"Checkpoint", title:"Checkpoint 3 · The Partnership", body:`Now decide what kind of neighbour the resort wants to be.
+
+Final 500-point challenge!`, quiz:[
+          {question:"A bad harvest reduces supply. What is the strongest response?", points:100, choices:[
+            {text:"Find temporary extra supply while discussing how the partnership can continue.", correct:true},
+            {text:"End the partnership immediately.", correct:false},
+            {text:"Ignore the shortage.", correct:false}
+          ], feedback:"A temporary solution can protect the guest experience and the long-term relationship."},
+          {question:"A local team member wants more responsibility. What can support long-term growth?", points:150, choices:[
+            {text:"Training and opportunities to build new skills.", correct:true},
+            {text:"Never giving them new tasks.", correct:false},
+            {text:"Only hiring people who already know everything.", correct:false}
+          ], feedback:"Training can help people grow while strengthening the team."},
+          {question:"Which statement best describes a sustainable resort community?", points:250, choices:[
+            {text:"It considers people, nature and long-term relationships together.", correct:true},
+            {text:"It only focuses on the guest during the holiday.", correct:false},
+            {text:"It only focuses on reducing plastic.", correct:false}
+          ], feedback:"Sustainability can include both environmental and social relationships."}
+        ]},
+        {type:"Family Action", title:"Support the Community", points:0, body:`Choose one action:
+
+buy locally, train staff, reduce waste, or build long-term partnerships.
+
+Why did you choose it?`},
+        {type:"Reflection", title:"Who Helped Today?", points:0, body:`Each family member names one person who helped make today better.
+
+Were your answers different?`},
+        {type:"Look Around", title:"Find a Local Connection", points:0, body:`Look for one local connection around the resort.
+
+Food, craft, staff story, sign, activity — what can you notice?`},
+        {type:"Story", title:"Tonight's Dinner", points:0, body:`At dinner, you see food that connects back to your mission.
+
+Farm → kitchen → family table.
+
+Now the people behind the meal are easier to see.`},
+        {type:"Achievement", title:"Community Mission Complete", points:0, body:`A great holiday depends on people as well as places.
+
+You discovered the community behind the resort.
+
+MISSION COMPLETE!`}
+      ]
+    }
+  };
+
+  const state = {
+    screen:"welcome",
+    route:null,
+    pos:0,
+    score:0,
+    possible:0,
+    diceMode:null,
+    currentSpaceScored:false,
+    lastRoll:null,
+    checkpointHit:false,
+    history:[]
+  };
+
+  const screen = document.getElementById("screen");
+  const restartBtn = document.getElementById("restartBtn");
+
+  function save(){
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){}
+  }
+  function restore(){
+    try{
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw) return false;
+      const saved = JSON.parse(raw);
+      if(saved && saved.route && ["nature","community"].includes(saved.route)){
+        Object.assign(state, saved);
+        if(!Array.isArray(state.history)) state.history = [];
+        return true;
+      }
+    }catch(e){}
+    return false;
+  }
+  function clearSave(){
+    try{ localStorage.removeItem(STORAGE_KEY); }catch(e){}
+  }
+  function esc(s){
+    return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[c]));
+  }
+  function setScreen(html){
+    screen.innerHTML = `<div class="fade">${html}</div>`;
+    restartBtn.classList.toggle("hidden", state.screen === "welcome");
+    try{ window.scrollTo({top:0, behavior:"smooth"}); }catch(e){ window.scrollTo(0,0); }
+  }
+  function resetAll(){
+    clearSave();
+    state.screen="welcome";
+    state.route=null;
+    state.pos=0;
+    state.score=0;
+    state.possible=0;
+    state.diceMode=null;
+    state.currentSpaceScored=false;
+    state.lastRoll=null;
+    state.checkpointHit=false;
+    state.history=[];
+    renderWelcome();
+  }
+  restartBtn.addEventListener("click", resetAll);
+
+  function renderWelcome(){
+    state.screen="welcome";
+    setScreen(`
+      <section class="hero">
+        <div class="eyebrow">🌍 A family sustainability adventure</div>
+        <h1>Your holiday has a hidden mission.</h1>
+        <p class="lead">The resort looks perfect. But behind the beaches, buffets and guest experiences are choices that affect nature and people.</p>
+        <div class="quote">Today, your family becomes the Sustainability Mission Team.</div>
+        <p>Choose a mission, roll a 4-sided dice, make decisions, discover real Club Med sustainability initiatives and see where your choices lead.</p>
+        <div class="actions">
+          <button class="btn btn-primary" id="beginBtn" type="button">Begin the mission</button>
+        </div>
+      </section>
+    `);
+    document.getElementById("beginBtn").addEventListener("click", renderRouteChoice);
+  }
+
+  function renderRouteChoice(){
+    state.screen="route";
+    setScreen(`
+      <section class="card">
+        <div class="eyebrow">Mission briefing</div>
+        <h2>Two problems. One choice.</h2>
+        <p>Nature and communities both matter — but your family will experience one story this time.</p>
+        <div class="route-grid">
+          <button class="route route-nature" data-route="nature" type="button">
+            <div class="route-icon">🌊</div>
+            <strong>Protect Nature</strong>
+            <span>Help protect the beach, biodiversity and sea turtles before hatching night.</span>
+          </button>
+          <button class="route route-community" data-route="community" type="button">
+            <div class="route-icon">🤝</div>
+            <strong>Support Community</strong>
+            <span>Help the resort grow without leaving local farmers and people behind.</span>
+          </button>
+        </div>
+      </section>
+    `);
+    document.querySelectorAll("[data-route]").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        state.route=btn.dataset.route;
+        state.pos=0;
+        state.score=0;
+        state.possible=0;
+        state.diceMode=null;
+        state.currentSpaceScored=false;
+        state.lastRoll=null;
+        state.checkpointHit=false;
+        state.history=[];
+        save();
+        renderRouteIntro();
+      });
+    });
+  }
+
+  function renderRouteIntro(){
+    const r=ROUTES[state.route];
+    state.screen="intro";
+    setScreen(`
+      <section class="hero">
+        <div class="eyebrow">${r.icon} ${esc(r.name)}</div>
+        <h2>${esc(r.introTitle)}</h2>
+        <p class="story-copy">${esc(r.intro)}</p>
+        <div class="impact-note">
+          <strong>Fair scoring:</strong> only Checkpoints give Green Score points. Every family is guaranteed to stop at all three Checkpoints, so everyone gets the same scoring opportunities.
+        </div>
+        <div class="actions">
+          <button class="btn btn-primary" id="continueIntro" type="button">Accept mission</button>
+        </div>
+      </section>
+    `);
+    document.getElementById("continueIntro").addEventListener("click", renderDiceModeChoice);
+  }
+
+  function renderDiceModeChoice(){
+    state.screen="diceChoice";
+    setScreen(`
+      <section class="card">
+        <div class="eyebrow">🎲 Choose your dice</div>
+        <h2>How would you like to roll?</h2>
+        <p>You can use the physical 4-sided dice from the game kit, or let the website roll for you.</p>
+        <div class="dice-mode-grid">
+          <button class="mode-card" data-mode="physical" type="button">
+            <strong>🎲 I have a physical dice</strong>
+            <span>Roll it, then tap 1–4 on this page.</span>
+          </button>
+          <button class="mode-card" data-mode="digital" type="button">
+            <strong>📱 Roll digitally</strong>
+            <span>Tap the digital D4 and watch it roll for one second.</span>
+          </button>
+        </div>
+      </section>
+    `);
+    document.querySelectorAll("[data-mode]").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        state.diceMode=btn.dataset.mode;
+        save();
+        renderRoll();
+      });
+    });
+  }
+
+  function statusMarkup(){
+    const r=ROUTES[state.route];
+    const pct=Math.min(100,(state.pos/20)*100);
+    return `
+      <div class="status">
+        <div>
+          <div class="status-label">${r.icon} ${esc(r.name)} · Space ${state.pos}/20</div>
+          <div class="progress"><div style="width:${pct}%"></div></div>
+        </div>
+        <div style="text-align:right">
+          <div class="status-label">Green Score</div>
+          <div class="score">🌱 ${state.score}</div>
+        </div>
+      </div>
+    `;
+  }
+
+  function undoButtonMarkup(){
+    return state.history.length
+      ? `<button class="btn btn-outline" id="undoMove" type="button">↩ Back to previous space</button>`
+      : "";
+  }
+
+  function attachUndoButton(){
+    const btn=document.getElementById("undoMove");
+    if(!btn) return;
+    btn.addEventListener("click", undoLastMove);
+  }
+
+  function renderRoll(message=""){
+    if(state.pos>=20){ renderFinal(); return; }
+    state.screen="roll";
+    const physical=state.diceMode==="physical";
+    setScreen(`
+      ${statusMarkup()}
+      <section class="card dice-panel">
+        <div class="eyebrow">Your turn</div>
+        <h2>${physical ? "Roll your physical D4" : "Tap the digital D4"}</h2>
+        ${message ? `<div class="checkpoint-alert">${esc(message)}</div>` : ""}
+        ${physical ? `
+          <p>Roll the 4-sided dice, then enter the result.</p>
+          <div class="roll-buttons">
+            <button class="roll-number" data-roll="1" type="button">1</button>
+            <button class="roll-number" data-roll="2" type="button">2</button>
+            <button class="roll-number" data-roll="3" type="button">3</button>
+            <button class="roll-number" data-roll="4" type="button">4</button>
+          </div>
+        ` : `
+          <p>Tap once. The dice will roll for about one second.</p>
+          <div class="d4-wrap">
+            <div class="d4 clickable" id="digitalD4" role="button" tabindex="0" aria-label="Roll digital 4-sided dice"><span>?</span></div>
+          </div>
+          <strong id="rollText">TAP TO ROLL</strong>
+        `}
+        <div class="footer-actions">
+          ${undoButtonMarkup()}
+          <button class="btn btn-secondary" id="switchDice" type="button">Switch dice method</button>
+        </div>
+      </section>
+    `);
+
+    document.getElementById("switchDice").addEventListener("click", renderDiceModeChoice);
+    attachUndoButton();
+
+    if(physical){
+      document.querySelectorAll("[data-roll]").forEach(b=>{
+        b.addEventListener("click", ()=>moveByRoll(Number(b.dataset.roll)));
+      });
+    }else{
+      const die=document.getElementById("digitalD4");
+      const text=document.getElementById("rollText");
+      let busy=false;
+      const roll=()=>{
+        if(busy) return;
+        busy=true;
+        die.classList.add("rolling");
+        text.textContent="ROLLING...";
+        const timer=setInterval(()=>{
+          die.querySelector("span").textContent=1+Math.floor(Math.random()*4);
+        },90);
+        setTimeout(()=>{
+          clearInterval(timer);
+          const result=1+Math.floor(Math.random()*4);
+          die.querySelector("span").textContent=result;
+          die.classList.remove("rolling");
+          text.textContent=`YOU ROLLED ${result}!`;
+          setTimeout(()=>moveByRoll(result),650);
+        },1000);
+      };
+      die.addEventListener("click",roll);
+      die.addEventListener("keydown",e=>{
+        if(e.key==="Enter"||e.key===" "){
+          e.preventDefault();
+          roll();
+        }
+      });
+    }
+  }
+
+  function moveByRoll(roll){
+    /* Save the exact state BEFORE the roll.
+       Undo returns to this snapshot, not merely one numbered space back. */
+    state.history.push({
+      pos:state.pos,
+      score:state.score,
+      possible:state.possible,
+      currentSpaceScored:state.currentSpaceScored,
+      lastRoll:state.lastRoll,
+      checkpointHit:state.checkpointHit
+    });
+
+    state.lastRoll=roll;
+    const old=state.pos;
+    const target=Math.min(20,old+roll);
+    const checkpoints=[5,10,15];
+    let destination=target;
+    let hit=false;
+
+    for(const cp of checkpoints){
+      if(cp>old && cp<=target){
+        destination=cp;
+        hit=true;
+        break;
+      }
+    }
+
+    state.pos=destination;
+    state.checkpointHit=hit && destination!==target;
+    state.currentSpaceScored=false;
+    save();
+    renderSpace();
+  }
+
+  function undoLastMove(){
+    if(!state.history.length) return;
+    const previous=state.history.pop();
+
+    state.pos=previous.pos;
+    state.score=previous.score;
+    state.possible=previous.possible;
+    state.currentSpaceScored=previous.currentSpaceScored;
+    state.lastRoll=previous.lastRoll;
+    state.checkpointHit=previous.checkpointHit || false;
+    save();
+
+    // If the previous position was the route start, show the mission start instead
+    // of jumping straight back to the dice.
+    if(state.pos===0){
+      renderRouteStartReturn();
+      return;
+    }
+
+    // Return to the actual square the player was on before rolling.
+    renderPreviousSpace();
+  }
+
+  function renderRouteStartReturn(){
+    const r=ROUTES[state.route];
+    state.screen="previousStart";
+    setScreen(`
+      <section class="hero">
+        <div class="eyebrow">${r.icon} Back at mission start</div>
+        <h2>${esc(r.introTitle)}</h2>
+        <p class="story-copy">${esc(r.intro)}</p>
+        <div class="checkpoint-alert">↩ You returned to the position you were at before your last roll.</div>
+        <div class="actions">
+          <button class="btn btn-primary" id="rollAgainFromStart" type="button">Roll again</button>
+        </div>
+      </section>
+    `);
+    document.getElementById("rollAgainFromStart").addEventListener("click",()=>renderRoll());
+  }
+
+  function renderPreviousSpace(){
+    const s=ROUTES[state.route].spaces[state.pos-1];
+    const isCheckpoint=[5,10,15].includes(state.pos);
+    state.screen="previousSpace";
+
+    setScreen(`
+      ${statusMarkup()}
+      <section class="card">
+        <div class="checkpoint-alert">↩ Back to the space you were on before your last roll.</div>
+        <div class="space-type ${isCheckpoint ? "checkpoint" : ""}">
+          ${isCheckpoint ? "🛑 " : ""}${esc(s.type)} · Space ${state.pos}
+        </div>
+        <h2>${esc(s.title)}</h2>
+        <p class="story-copy">${esc(s.body)}</p>
+
+        <div class="impact-note">
+          This space was already completed. Your Green Score stays exactly as it was.
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-primary" id="returnToRoll" type="button">Roll from this space</button>
+        </div>
+      </section>
+    `);
+
+    document.getElementById("returnToRoll").addEventListener("click",()=>renderRoll());
+  }
+
+  function award(points,maxPoints=points){
+    if(state.currentSpaceScored) return false;
+    state.score+=points;
+    state.possible+=maxPoints;
+    state.currentSpaceScored=true;
+    save();
+    return true;
+  }
+
+  function showPointCelebration(points,nextAction,subtitle="Green Score earned"){
+    state.screen="points";
+    setScreen(`
+      ${statusMarkup()}
+      <section class="card point-pop">
+        <span class="spark s1"></span>
+        <span class="spark s2"></span>
+        <span class="spark s3"></span>
+        <span class="spark s4"></span>
+        <span class="spark s5"></span>
+        <div class="point-icon">🌱</div>
+        <div class="point-big">+${points}</div>
+        <div class="point-get">${points === 0 ? "CHECKPOINT COMPLETE!" : "POINTS GET!"}</div>
+        <div class="point-sub">${esc(subtitle)}</div>
+        <div class="actions" style="justify-content:center">
+          <button class="btn btn-primary" id="continueAfterPoints" type="button">Continue</button>
+        </div>
+        <div class="footer-actions">
+          ${undoButtonMarkup()}
+        </div>
+      </section>
+    `);
+    document.getElementById("continueAfterPoints").addEventListener("click",nextAction);
+    attachUndoButton();
+  }
+
+  function renderSpace(){
+    const r=ROUTES[state.route];
+    const s=r.spaces[state.pos-1];
+    state.screen="space";
+    const isCheckpoint=[5,10,15].includes(state.pos);
+
+    if(s.quiz && isCheckpoint){
+      renderCheckpointQuiz(s);
+      return;
+    }
+
+    setScreen(`
+      ${statusMarkup()}
+      ${state.checkpointHit ? `<div class="checkpoint-alert">🛑 Your roll would have passed an important story moment, so the mission stopped you at Checkpoint ${state.pos}.</div>` : ""}
+      <section class="card">
+        <div class="space-type ${isCheckpoint ? "checkpoint" : ""}">${isCheckpoint ? "🛑 " : ""}${esc(s.type)} · Space ${state.pos}</div>
+        <h2>${esc(s.title)}</h2>
+        <p class="story-copy">${esc(s.body)}</p>
+
+        <div class="actions">
+          <button class="btn btn-primary" id="completeSpace" type="button">${state.pos===20 ? "Finish this mission" : "Done — roll again"}</button>
+        </div>
+
+        <div class="footer-actions">
+          ${undoButtonMarkup()}
+        </div>
+      </section>
+    `);
+
+    attachUndoButton();
+
+    document.getElementById("completeSpace").addEventListener("click",()=>{
+      state.currentSpaceScored=true;
+      save();
+      state.pos>=20 ? renderFinal() : renderRoll();
+    });
+  }
+
+  function renderCheckpointQuiz(s){
+    let qIndex=0;
+    let checkpointScore=0;
+    const checkpointMax=s.quiz.reduce((sum,q)=>sum+q.points,0);
+
+    const showQuestion=()=>{
+      const q=s.quiz[qIndex];
+
+      setScreen(`
+        ${statusMarkup()}
+        ${state.checkpointHit ? `<div class="checkpoint-alert">🛑 Everyone stops here — this is a scoring Checkpoint.</div>` : ""}
+        <section class="card">
+          <div class="space-type checkpoint">🛑 Checkpoint · Space ${state.pos}</div>
+          <h2>${esc(s.title)}</h2>
+          ${qIndex===0 ? `<p class="story-copy">${esc(s.body)}</p>` : ""}
+          <div class="impact-note">
+            Question ${qIndex+1} of ${s.quiz.length} · Worth <strong>${q.points} points</strong><br>
+            Checkpoint score so far: <strong>${checkpointScore} / ${checkpointMax}</strong>
+          </div>
+          <h3 style="margin-top:18px">${esc(q.question)}</h3>
+
+          <div class="choice-list" id="choices">
+            ${q.choices.map((c,i)=>`<button class="choice" data-choice="${i}" type="button">${String.fromCharCode(65+i)}. ${esc(c.text)}</button>`).join("")}
+          </div>
+          <div id="feedback"></div>
+
+          <div class="footer-actions">
+            ${undoButtonMarkup()}
+          </div>
+        </section>
+      `);
+
+      attachUndoButton();
+
+      document.querySelectorAll("[data-choice]").forEach(btn=>{
+        btn.addEventListener("click",()=>{
+          const idx=Number(btn.dataset.choice);
+          const choice=q.choices[idx];
+
+          document.querySelectorAll("[data-choice]").forEach((b,i)=>{
+            b.disabled=true;
+            if(q.choices[i].correct) b.classList.add("correct");
+            else if(i===idx) b.classList.add("wrong");
+          });
+
+          if(choice.correct) checkpointScore += q.points;
+
+          document.getElementById("feedback").innerHTML=`
+            <div class="feedback">
+              <strong>${choice.correct ? `+${q.points} points!` : "0 points this time."}</strong><br>
+              ${esc(q.feedback)}
+              <div class="actions">
+                <button class="btn btn-primary" id="nextQuizQ" type="button">${qIndex+1<s.quiz.length ? "Next question" : "Finish Checkpoint"}</button>
+              </div>
+            </div>
+          `;
+
+          document.getElementById("nextQuizQ").addEventListener("click",()=>{
+            qIndex++;
+            if(qIndex < s.quiz.length){
+              showQuestion();
+            }else{
+              award(checkpointScore,checkpointMax);
+              showPointCelebration(
+                checkpointScore,
+                ()=>renderRoll(),
+                `Checkpoint complete — ${checkpointScore} / ${checkpointMax} points`
+              );
+            }
+          });
+        });
+      });
+    };
+
+    showQuestion();
+  }
+
+  function loadBestScores(){
+    try{
+      const raw=localStorage.getItem(BEST_SCORE_KEY);
+      const parsed=raw ? JSON.parse(raw) : {};
+      return {
+        nature:Number(parsed.nature)||0,
+        community:Number(parsed.community)||0
+      };
+    }catch(e){
+      return {nature:0,community:0};
+    }
+  }
+
+  function saveBestScore(route,score){
+    const best=loadBestScores();
+    const previous=best[route]||0;
+    if(score>previous){
+      best[route]=score;
+      try{ localStorage.setItem(BEST_SCORE_KEY,JSON.stringify(best)); }catch(e){}
+      return {best:score,isNew:true,previous};
+    }
+    return {best:previous,isNew:false,previous};
+  }
+
+  function impactRate(){
+    if(state.possible<=0) return 100;
+    return Math.round((state.score/state.possible)*100);
+  }
+  function rank(score){
+    if(score>=1250) return "Sustainability Champion";
+    if(score>=1000) return "Green Guardian";
+    if(score>=500) return "Green Changemaker";
+    return "Green Explorer";
+  }
+
+  function renderFinal(){
+    const r=ROUTES[state.route];
+    const title=rank(state.score);
+    const bestResult=saveBestScore(state.route,state.score);
+    state.screen="final";
+    save();
+
+    const routeReflection=state.route==="nature"
+      ? `You protected wildlife and learned that a beautiful beach is also a habitat. But nature can only stay protected when people keep choosing to protect it.`
+      : `You strengthened the link between the resort and the people around it. But communities also depend on healthy land, water and ecosystems.`;
+
+    setScreen(`
+      <section class="hero">
+        <div class="eyebrow">🌍 Final goal · The two paths meet</div>
+        <h1>Your mission ends here.<br>Your impact doesn't.</h1>
+        <p class="lead">${esc(routeReflection)}</p>
+        <div class="quote">Nature and people were never two separate missions. Sustainability is the connection between people, nature and the choices we make.</div>
+
+        ${bestResult.isNew ? `<div class="checkpoint-alert">🏆 NEW HIGH SCORE!</div>` : ""}
+
+        <div class="final-score">
+          <div class="metric"><span class="status-label">Final Green Score</span><b>🌱 ${state.score}</b></div>
+          <div class="metric"><span class="status-label">Best score on this device</span><b>🏆 ${bestResult.best}</b></div>
+        </div>
+
+        <div class="final-badge">🏅 ${esc(r.badge)}</div>
+        <h3>${esc(title)}</h3>
+        <p>${state.score>=REWARD_SCORE
+          ? `🎁 You reached the <strong>${REWARD_SCORE}-point reward target!</strong> Show this screen to the Club Med team to claim the small sustainability reward.`
+          : `🎯 The reward target is <strong>${REWARD_SCORE} points</strong>. Try the other mission and see if your family can beat this score!`
+        }</p>
+
+        <div class="actions">
+          <button class="btn btn-primary" id="playAgain" type="button">Try the other mission</button>
+          ${undoButtonMarkup()}
+        </div>
+      </section>
+    `);
+
+    attachUndoButton();
+
+    document.getElementById("playAgain").addEventListener("click",()=>{
+      const other=state.route==="nature" ? "community" : "nature";
+      state.route=other;
+      state.pos=0;
+      state.score=0;
+      state.possible=0;
+      state.currentSpaceScored=false;
+      state.lastRoll=null;
+      state.checkpointHit=false;
+      state.history=[];
+      save();
+      renderRouteIntro();
+    });
+  }
+
+  const resumed=restore();
+  if(resumed){
+    if(state.pos>=20 && state.screen!=="previousSpace") renderFinal();
+    else if(state.screen==="previousSpace" && state.pos>0) renderPreviousSpace();
+    else if(state.screen==="previousStart") renderRouteStartReturn();
+    else if(state.screen==="space" && state.pos>0) renderSpace();
+    else if(state.route) renderRoll("Welcome back — your progress was saved on this device.");
+    else renderWelcome();
+  }else{
+    renderWelcome();
+  }
+})();
+</script>
+</body>
+</html>
